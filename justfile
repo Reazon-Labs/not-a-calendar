@@ -1,0 +1,2 @@
+run:
+    tuist run NotACalendar
