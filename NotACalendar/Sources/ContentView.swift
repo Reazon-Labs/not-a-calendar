@@ -2,8 +2,19 @@ import SwiftUI
 
 public struct ContentView: View {
   let calendar = Calendar.current
+  let cmdManager = CommandManager()
 
   public var body: some View {
+
+    ForEach(cmdManager.commands, id: \.id) { cmd in
+      if let shortcut = cmd.currentShortcut {
+        Button("") {
+          cmdManager.execute(cmd)
+        }
+        .keyboardShortcut(shortcut)
+        .opacity(0)
+      }
+    }
 
     let weekStart = calendar.startOfDay(for: Date())  // adjust to Monday if needed
     let sample = [
