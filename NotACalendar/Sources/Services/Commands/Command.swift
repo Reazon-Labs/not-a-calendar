@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 protocol Command: Identifiable {
-  var id: UUID { get }
+  var id: String { get }
   var title: String { get }
   var description: String { get }
   var defaultShortcut: KeyboardShortcut? { get }

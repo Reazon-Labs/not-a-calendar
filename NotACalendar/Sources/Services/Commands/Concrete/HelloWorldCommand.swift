@@ -9,10 +9,10 @@ import Foundation
 import SwiftUI
 
 struct HelloWorldCommand: Command {
-  var id: UUID = UUID()
-  var title: String = "Hello World"
-  var description: String = "Displays 'Hello World' in the console. Testing purposes only"
-  var defaultShortcut:  KeyboardShortcut? = KeyboardShortcut("h", modifiers: [.command, .option])
+  var id = "hello_world_command"
+  var title = "Hello World"
+  var description = "Displays 'Hello World' in the console. Testing purposes only"
+  var defaultShortcut: KeyboardShortcut? = KeyboardShortcut("h", modifiers: [.command, .option])
 
   func execute() {
     print("Hello World from the command system !")

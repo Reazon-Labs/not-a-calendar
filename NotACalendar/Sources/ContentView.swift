@@ -12,7 +12,7 @@ public struct ContentView: View {
           cmdManager.execute(cmd)
         }
         .keyboardShortcut(shortcut)
-        .opacity(0)
+        .hidden()
       }
     }
 
