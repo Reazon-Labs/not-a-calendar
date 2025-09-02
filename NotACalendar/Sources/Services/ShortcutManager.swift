@@ -11,7 +11,7 @@ import SwiftUI
 class ShortcutManager: ObservableObject {
   static let shared = ShortcutManager()
 
-  @Published private(set) var shortcuts: [UUID: KeyboardShortcut] = [:]
+  @Published private(set) var shortcuts: [String: KeyboardShortcut] = [:]
 
   private init() {
     loadShortcuts()
@@ -29,7 +29,7 @@ class ShortcutManager: ObservableObject {
 
   private func loadShortcuts() {
     if let data = UserDefaults.standard.data(forKey: "shortcuts"),
-      let decoded = try? JSONDecoder().decode([UUID: ShortcutData].self, from: data)
+      let decoded = try? JSONDecoder().decode([String: ShortcutData].self, from: data)
     {
       self.shortcuts = decoded.mapValues { $0.keyboardShortcut }
     }
