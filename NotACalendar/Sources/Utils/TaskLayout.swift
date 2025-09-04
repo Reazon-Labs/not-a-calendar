@@ -14,7 +14,10 @@ struct TaskLayout {
   var dayIndex: Int {
     // To handle week boundaries correctly, we should probably use week-based logic.
     // Assuming week starts on `weekStart` and we just want the day difference.
-    return calendar.dateComponents([.day], from: calendar.startOfDay(for: weekStart), to: calendar.startOfDay(for: event.deadline.start)).day ?? 0
+    return calendar.dateComponents(
+      [.day], from: calendar.startOfDay(for: weekStart),
+      to: calendar.startOfDay(for: event.deadline.start)
+    ).day ?? 0
   }
 
   /// The starting hour of the event as a decimal value (e.g., 9.5 for 9:30 AM).

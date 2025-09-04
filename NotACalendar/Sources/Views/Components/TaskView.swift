@@ -67,27 +67,27 @@ struct TaskView: View {
 }
 
 #Preview("Truncated", traits: .sizeThatFitsLayout) {
-    
-    TaskView(
-      event:
-        TaskModel(
-          title: "Meeting",
-          deadline: DateInterval(
-            start: Calendar.current.date(
-              bySettingHour: 9,
-              minute: 0,
-              second: 0,
-              of: Date()
-            )!,
-            end: Calendar.current.date(
-              bySettingHour: 10,
-              minute: 30,
-              second: 0,
-              of: Date()
-            )!
-          )
-        ),
-    )
-    .padding(14)
-    .frame(width: 100, height: 60)
+
+  TaskView(
+    event:
+      TaskModel(
+        title: "Meeting",
+        deadline: DateInterval(
+          start: Calendar.current.date(
+            bySettingHour: 9,
+            minute: 0,
+            second: 0,
+            of: Date()
+          )!,
+          end: Calendar.current.date(
+            bySettingHour: 10,
+            minute: 30,
+            second: 0,
+            of: Date()
+          )!
+        )
+      ),
+  )
+  .padding(14)
+  .frame(width: 100, height: 60)
 }

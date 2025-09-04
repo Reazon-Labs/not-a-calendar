@@ -15,13 +15,13 @@ class CommandManager: ObservableObject {
     self.commands = [
       HelloWorldCommand()
     ]
-    
+
     for cmd in commands {
-        if ShortcutManager.shared.shortcut(for: cmd) == nil,
-           let defaultShortcut = cmd.defaultShortcut
-        {
-            ShortcutManager.shared.updateShortcut(defaultShortcut, for: cmd)
-        }
+      if ShortcutManager.shared.shortcut(for: cmd) == nil,
+        let defaultShortcut = cmd.defaultShortcut
+      {
+        ShortcutManager.shared.updateShortcut(defaultShortcut, for: cmd)
+      }
     }
   }
 
