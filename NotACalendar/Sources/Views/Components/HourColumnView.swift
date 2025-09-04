@@ -13,7 +13,7 @@ struct HourColumnView: View {
           .font(.caption2)
           .frame(maxWidth: .infinity, alignment: .trailing)
           .padding(.trailing, 4)
-          .offset(y: hourHeight * CGFloat(hour) - 7) // -7 to center vertically on the line
+          .offset(y: hourHeight * CGFloat(hour) - 7)  // -7 to center vertically on the line
       }
     }
     .frame(width: 44)

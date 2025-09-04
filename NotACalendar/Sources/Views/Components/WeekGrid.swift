@@ -42,7 +42,8 @@ struct WeekGrid: View {
 
 #Preview {
   struct PreviewWrapper: View {
-    let weekStart = Calendar.current.date(from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
+    let weekStart = Calendar.current.date(
+      from: Calendar.current.dateComponents([.yearForWeekOfYear, .weekOfYear], from: Date()))!
 
     // Mock data for preview
     let events: [TaskModel] = [
@@ -64,12 +65,13 @@ struct WeekGrid: View {
           start: Calendar.current.date(
             bySettingHour: 11, minute: 0, second: 0, of: Date())!,
           end: Calendar.current.date(
-            bySettingHour: 12, minute: 0, second: 0, of: Date())!)),    ]
+            bySettingHour: 12, minute: 0, second: 0, of: Date())!)),
+    ]
 
     var body: some View {
       WeekGrid(weekStart: weekStart, events: events)
     }
   }
-  
+
   return PreviewWrapper()
 }
