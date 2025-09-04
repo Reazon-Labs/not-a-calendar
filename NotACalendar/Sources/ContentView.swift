@@ -39,11 +39,7 @@ public struct ContentView: View {
             bySettingHour: 12, minute: 0, second: 0, of: Date())!)),
     ]
 
-    VStack {
-      WeekdayHeader(weekStart: weekStart)
-      Divider()
-      WeekGrid(weekStart: weekStart, events: sample)
-    }
+    WeeklyView(weekStart: weekStart, events: sample)
   }
 }
 

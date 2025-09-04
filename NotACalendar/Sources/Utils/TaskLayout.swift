@@ -1,10 +1,8 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Event Layout Helper
-
 /// A utility to calculate the position and size of an event in the week grid.
-struct EventLayout {
+struct TaskLayout {
   let event: TaskModel
   let weekStart: Date
   let hourHeight: CGFloat

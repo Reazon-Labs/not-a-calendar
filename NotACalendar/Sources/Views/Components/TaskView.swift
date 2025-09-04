@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct EventView: View {
+struct TaskView: View {
   let event: TaskModel
 
   var body: some View {
@@ -23,6 +23,8 @@ struct EventView: View {
           Date.FormatStyle().hour().minute()
         )
         Text("\(start)-\(end)")
+          .truncationMode(.tail)
+          .lineLimit(1)
       }
       .font(.footnote)
       .opacity(0.8)
@@ -40,7 +42,7 @@ struct EventView: View {
 }
 
 #Preview("", traits: .sizeThatFitsLayout) {
-  EventView(
+  TaskView(
     event:
       TaskModel(
         title: "Meeting",
@@ -62,4 +64,30 @@ struct EventView: View {
   )
   .padding(14)
   .frame(width: 150, height: 60)
+}
+
+#Preview("Truncated", traits: .sizeThatFitsLayout) {
+    
+    TaskView(
+      event:
+        TaskModel(
+          title: "Meeting",
+          deadline: DateInterval(
+            start: Calendar.current.date(
+              bySettingHour: 9,
+              minute: 0,
+              second: 0,
+              of: Date()
+            )!,
+            end: Calendar.current.date(
+              bySettingHour: 10,
+              minute: 30,
+              second: 0,
+              of: Date()
+            )!
+          )
+        ),
+    )
+    .padding(14)
+    .frame(width: 100, height: 60)
 }
