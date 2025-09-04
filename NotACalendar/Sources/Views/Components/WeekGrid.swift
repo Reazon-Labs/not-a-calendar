@@ -1,7 +1,5 @@
 import SwiftUI
 
-// MARK: - Week Grid View
-
 struct WeekGrid: View {
   let weekStart: Date
   let events: [TaskModel]
@@ -32,7 +30,7 @@ struct WeekGrid: View {
 
   private func eventContainer(columnWidth: CGFloat) -> some View {
     ForEach(events) { event in
-      EventPlacementView(
+      TaskPlacementView(
         event: event,
         weekStart: weekStart,
         hourHeight: hourHeight,
@@ -41,8 +39,6 @@ struct WeekGrid: View {
     }
   }
 }
-
-// MARK: - Preview
 
 #Preview {
   struct PreviewWrapper: View {
