@@ -18,7 +18,7 @@ class WeeklyViewModel: ObservableObject {
     self.daysDisplayed = daysDisplayed
     self.currentWeekStart = calendar.startOfWeek(for: startDate)
   }
-  
+
   var month: String {
     currentWeekStart.formatted(.dateTime.month(.wide).year())
   }
@@ -26,31 +26,30 @@ class WeeklyViewModel: ObservableObject {
   func loadWeek(for date: Date) {
     self.currentWeekStart = calendar.startOfWeek(for: date)
   }
-  
+
   func nextWeek() {
-    if let next = calendar.date(byAdding: .day, value: 7, to: currentWeekStart) {
+    if let next = calendar.date(byAdding: .day, value: daysDisplayed, to: currentWeekStart) {
       currentWeekStart = next
     }
   }
-  
+
   func previousWeek() {
-    if let previous = calendar.date(byAdding: .day, value: -7, to: currentWeekStart) {
+    if let previous = calendar.date(byAdding: .day, value: -daysDisplayed, to: currentWeekStart) {
       currentWeekStart = previous
     }
   }
-  
+
   func isToday(_ date: Date) -> Bool {
     calendar.isDateInToday(date)
   }
-  
+
   func resetOffset() {
     currentWeekStart = calendar.startOfWeek(for: Date())
   }
 
-
   func fetchTasks(since day: Date, days: Int) {
     let day = calendar.startOfDay(for: day)
-    
+
     tasks = [
       TaskModel(
         title: "Test",

@@ -13,33 +13,29 @@ struct WeeklyView: View {
   init() {
     viewModel.fetchTasks(since: Date(), days: 7)
   }
-  
+
   var body: some View {
     if viewModel.tasks == nil {
       Text("Loading")
     } else {
 
       VStack(spacing: 0) {
-        HStack(spacing: 0) {
+        HStack(spacing: 4) {
           Text(viewModel.month)
             .font(.headline)
-          
-          Spacer()
-          
+
           Button {
             viewModel.resetOffset()
           } label: {
             Text("Today")
           }
-          
-          Spacer().frame(width: 4)
-          
+
           Button {
             viewModel.previousWeek()
           } label: {
             Image(systemName: "chevron.left")
           }
-          
+
           Button {
             viewModel.nextWeek()
           } label: {
@@ -47,10 +43,10 @@ struct WeeklyView: View {
           }
         }
         .padding(.horizontal, 6)
-        
+
         WeekdayHeader(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
         Divider()
-        WeekGrid(weekStart: viewModel.currentWeekStart, events: viewModel.tasks!)
+        WeekGrid(viewModel: viewModel)
       }
       .padding(.top, 4)
     }

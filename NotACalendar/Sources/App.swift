@@ -6,5 +6,6 @@ struct NotACalendar: App {
     WindowGroup {
       ContentView()
     }
+    .windowStyle(.hiddenTitleBar)
   }
 }

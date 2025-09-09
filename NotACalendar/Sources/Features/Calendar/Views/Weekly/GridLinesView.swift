@@ -4,14 +4,16 @@ import SwiftUI
 
 struct GridLinesView: View {
   let hourHeight: CGFloat
-  let numDays: Int = 7
+  @ObservedObject var viewModel: WeeklyViewModel
 
   var body: some View {
     ZStack(alignment: .top) {
       // Horizontal lines
       VStack(spacing: 0) {
-        ForEach(0..<24, id: \.self) { _ in
-          Divider()
+        ForEach(0..<24, id: \.self) { i in
+          if i != 0 {
+            Divider()
+          }
           Spacer().frame(height: hourHeight - 1)
         }
         Divider()
@@ -19,7 +21,7 @@ struct GridLinesView: View {
 
       // Vertical lines
       HStack(spacing: 0) {
-        ForEach(0..<numDays, id: \.self) { i in
+        ForEach(0..<viewModel.daysDisplayed, id: \.self) { i in
           if i > 0 {
             Divider()
           }

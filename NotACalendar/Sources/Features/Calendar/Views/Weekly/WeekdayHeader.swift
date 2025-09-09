@@ -8,7 +8,7 @@ import SwiftUI
 
 struct WeekdayHeader: View {
   @ObservedObject var viewModel: WeeklyViewModel
-  
+
   let weekStart: Date
   let calendar = Calendar.current
 
@@ -16,19 +16,19 @@ struct WeekdayHeader: View {
     HStack {
       Spacer().frame(width: 44)  // to align with hour labels
 
-      ForEach(0..<7, id: \.self) { offset in
+      ForEach(0..<viewModel.daysDisplayed, id: \.self) { offset in
         let day = calendar.date(byAdding: .day, value: offset, to: weekStart)!
         let isToday = viewModel.isToday(day)
-        
+
         VStack {
           Text(day, format: .dateTime.weekday(.abbreviated))
             .bold(isToday)
-          
+
           ZStack {
-              Circle()
+            Circle()
               .fill(isToday ? Color.blue.opacity(0.9) : .clear)
-                .frame(width: 25, height: 25)
-            
+              .frame(width: 25, height: 25)
+
             Text(day, format: .dateTime.day())
               .foregroundStyle(isToday ? .white : .black)
           }
