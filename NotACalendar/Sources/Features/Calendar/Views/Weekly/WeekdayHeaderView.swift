@@ -1,12 +1,12 @@
 //
-//  WeekdayHeader.swift
+//  WeekdayHeaderView.swift
 //  NotACalendar
 //
 //  Created by jocke on 18/08/2025.
 //
 import SwiftUI
 
-struct WeekdayHeader: View {
+struct WeekdayHeaderView: View {
   @ObservedObject var viewModel: WeeklyViewModel
 
   let weekStart: Date

@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct WeekGrid: View {
+struct WeekGridView: View {
   @State private var hourHeight: CGFloat = 60.0
   @ObservedObject var viewModel: WeeklyViewModel
 
