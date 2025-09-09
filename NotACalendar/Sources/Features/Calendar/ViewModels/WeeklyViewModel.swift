@@ -38,6 +38,10 @@ class WeeklyViewModel: ObservableObject {
   func isToday(_ date: Date) -> Bool {
     calendar.isDateInToday(date)
   }
+  
+  func resetOffset() {
+    currentWeekStart = calendar.startOfWeek(for: Date())
+  }
 
 
   func fetchTasks(since day: Date, days: Int) {

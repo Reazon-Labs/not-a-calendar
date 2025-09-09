@@ -20,17 +20,25 @@ struct WeeklyView: View {
     } else {
 
       VStack(spacing: 0) {
-        HStack {
+        HStack(spacing: 0) {
+          Button {
+            viewModel.resetOffset()
+          } label: {
+            Text("Today")
+          }
+          
+          Spacer().frame(width: 4)
+          
           Button {
             viewModel.previousWeek()
           } label: {
-            Text("Previous")
+            Image(systemName: "chevron.left")
           }
           
           Button {
             viewModel.nextWeek()
           } label: {
-            Text("Next")
+            Image(systemName: "chevron.right")
           }
         }
         
@@ -38,6 +46,7 @@ struct WeeklyView: View {
         Divider()
         WeekGrid(weekStart: viewModel.currentWeekStart, events: viewModel.tasks!)
       }
+      .padding(.top, 4)
     }
   }
 
