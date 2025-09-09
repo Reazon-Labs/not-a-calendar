@@ -18,6 +18,10 @@ class WeeklyViewModel: ObservableObject {
     self.daysDisplayed = daysDisplayed
     self.currentWeekStart = calendar.startOfWeek(for: startDate)
   }
+  
+  var month: String {
+    currentWeekStart.formatted(.dateTime.month(.wide).year())
+  }
 
   func loadWeek(for date: Date) {
     self.currentWeekStart = calendar.startOfWeek(for: date)

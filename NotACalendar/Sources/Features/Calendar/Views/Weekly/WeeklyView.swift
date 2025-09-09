@@ -21,6 +21,11 @@ struct WeeklyView: View {
 
       VStack(spacing: 0) {
         HStack(spacing: 0) {
+          Text(viewModel.month)
+            .font(.headline)
+          
+          Spacer()
+          
           Button {
             viewModel.resetOffset()
           } label: {
@@ -41,6 +46,7 @@ struct WeeklyView: View {
             Image(systemName: "chevron.right")
           }
         }
+        .padding(.horizontal, 6)
         
         WeekdayHeader(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
         Divider()
