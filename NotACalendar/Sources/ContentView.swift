@@ -39,7 +39,7 @@ public struct ContentView: View {
             bySettingHour: 12, minute: 0, second: 0, of: Date())!)),
     ]
 
-    WeeklyView(weekStart: weekStart, events: sample)
+    WeeklyView()
   }
 }
 

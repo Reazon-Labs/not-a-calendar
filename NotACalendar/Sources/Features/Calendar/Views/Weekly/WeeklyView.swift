@@ -8,16 +8,40 @@
 import SwiftUI
 
 struct WeeklyView: View {
-  let weekStart: Date
-  let events: [TaskModel]
+  @ObservedObject private var viewModel = WeeklyViewModel()
 
+  init() {
+    viewModel.fetchTasks(since: Date(), days: 7)
+    print(Calendar.current.startOfWeek(for: Date()))
+  }
+  
   var body: some View {
-    VStack(spacing: 0) {
-      WeekdayHeader(weekStart: weekStart)
-      Divider()
-      WeekGrid(weekStart: weekStart, events: events)
+    if viewModel.tasks == nil {
+      Text("Loading")
+    } else {
+
+      VStack(spacing: 0) {
+        HStack {
+          Button {
+            viewModel.previousWeek()
+          } label: {
+            Text("Previous")
+          }
+          
+          Button {
+            viewModel.nextWeek()
+          } label: {
+            Text("Next")
+          }
+        }
+        
+        WeekdayHeader(weekStart: viewModel.currentWeekStart)
+        Divider()
+        WeekGrid(weekStart: viewModel.currentWeekStart, events: viewModel.tasks!)
+      }
     }
   }
+
 }
 
 #Preview {
@@ -46,7 +70,6 @@ struct WeeklyView: View {
           bySettingHour: 12, minute: 0, second: 0, of: Date())!)),
   ]
 
-  WeeklyView(
-    weekStart: weekStart, events: events)
+  WeeklyView()
 
 }
