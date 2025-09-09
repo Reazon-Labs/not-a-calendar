@@ -34,6 +34,10 @@ class WeeklyViewModel: ObservableObject {
       currentWeekStart = previous
     }
   }
+  
+  func isToday(_ date: Date) -> Bool {
+    calendar.isDateInToday(date)
+  }
 
 
   func fetchTasks(since day: Date, days: Int) {

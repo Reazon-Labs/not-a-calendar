@@ -12,7 +12,6 @@ struct WeeklyView: View {
 
   init() {
     viewModel.fetchTasks(since: Date(), days: 7)
-    print(Calendar.current.startOfWeek(for: Date()))
   }
   
   var body: some View {
@@ -35,7 +34,7 @@ struct WeeklyView: View {
           }
         }
         
-        WeekdayHeader(weekStart: viewModel.currentWeekStart)
+        WeekdayHeader(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
         Divider()
         WeekGrid(weekStart: viewModel.currentWeekStart, events: viewModel.tasks!)
       }
