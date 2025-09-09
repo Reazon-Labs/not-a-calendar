@@ -16,29 +16,6 @@ public struct ContentView: View {
       }
     }
 
-    let weekStart = calendar.startOfDay(for: Date())  // adjust to Monday if needed
-    let sample = [
-      TaskModel(
-        title: "Test",
-        deadline: DateInterval(
-          start: calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!,
-          end: calendar.date(bySettingHour: 1, minute: 0, second: 0, of: Date())!)),
-      TaskModel(
-        title: "Meeting",
-        deadline: DateInterval(
-          start: calendar.date(
-            bySettingHour: 9, minute: 0, second: 0, of: Date())!,
-          end: calendar.date(
-            bySettingHour: 10, minute: 30, second: 0, of: Date())!)),
-      TaskModel(
-        title: "Workout",
-        deadline: DateInterval(
-          start: calendar.date(
-            bySettingHour: 11, minute: 0, second: 0, of: Date())!,
-          end: calendar.date(
-            bySettingHour: 12, minute: 0, second: 0, of: Date())!)),
-    ]
-
     WeeklyView()
   }
 }
