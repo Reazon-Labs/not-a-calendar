@@ -23,6 +23,8 @@ struct WeeklyView: View {
         HStack(spacing: 4) {
           Text(viewModel.month)
             .font(.headline)
+          
+          Spacer()
 
           Button {
             viewModel.resetOffset()
