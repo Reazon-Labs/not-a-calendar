@@ -17,7 +17,9 @@ struct WeekGridView: View {
           ZStack(alignment: .topLeading) {
             GridLinesView(hourHeight: hourHeight, viewModel: viewModel)
 
-            eventContainer(columnWidth: columnWidth)
+            if let tasks = viewModel.tasks {
+              eventContainer(columnWidth: columnWidth, tasks: tasks)
+            }
           }
         }
       }
@@ -25,8 +27,8 @@ struct WeekGridView: View {
     }
   }
 
-  private func eventContainer(columnWidth: CGFloat) -> some View {
-    ForEach(viewModel.tasks!) { task in
+  private func eventContainer(columnWidth: CGFloat, tasks: [TaskModel]) -> some View {
+    ForEach(tasks) { task in
       TaskPlacementView(
         event: task,
         weekStart: viewModel.currentWeekStart,

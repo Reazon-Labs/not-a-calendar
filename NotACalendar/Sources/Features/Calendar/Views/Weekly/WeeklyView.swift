@@ -15,43 +15,38 @@ struct WeeklyView: View {
   }
 
   var body: some View {
-    if viewModel.tasks == nil {
-      Text("Loading")
-    } else {
+    VStack(spacing: 0) {
+      HStack(spacing: 4) {
+        Text(viewModel.month)
+          .font(.headline)
 
-      VStack(spacing: 0) {
-        HStack(spacing: 4) {
-          Text(viewModel.month)
-            .font(.headline)
-          
-          Spacer()
+        Spacer()
 
-          Button {
-            viewModel.resetOffset()
-          } label: {
-            Text("Today")
-          }
-
-          Button {
-            viewModel.previousWeek()
-          } label: {
-            Image(systemName: "chevron.left")
-          }
-
-          Button {
-            viewModel.nextWeek()
-          } label: {
-            Image(systemName: "chevron.right")
-          }
+        Button {
+          viewModel.resetOffset()
+        } label: {
+          Text("Today")
         }
-        .padding(.horizontal, 6)
 
-        WeekdayHeaderView(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
-        Divider()
-        WeekGrid(viewModel: viewModel)
+        Button {
+          viewModel.previousWeek()
+        } label: {
+          Image(systemName: "chevron.left")
+        }
+
+        Button {
+          viewModel.nextWeek()
+        } label: {
+          Image(systemName: "chevron.right")
+        }
       }
-      .padding(.top, 4)
+      .padding(.horizontal, 6)
+
+      WeekdayHeaderView(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
+      Divider()
+      WeekGridView(viewModel: viewModel)
     }
+    .padding(.top, 4)
   }
 
 }
