@@ -33,7 +33,6 @@ struct CurrentTimeIndicatorView: View {
       Spacer()
     }
     .onReceive(Timer.publish(every: 5, on: .main, in: .common).autoconnect()) { _ in
-      print("\(verticalOffset)")
       now = Date()
     }
   }

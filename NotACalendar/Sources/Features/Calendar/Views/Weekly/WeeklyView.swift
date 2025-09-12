@@ -38,7 +38,7 @@ struct WeeklyView: View {
       }
       .padding(.horizontal, 6)
 
-      WeekdayHeaderView(viewModel: viewModel, weekStart: viewModel.currentWeekStart)
+      WeekdayHeaderView(viewModel: viewModel)
       Divider()
       WeekGridView(viewModel: viewModel)
     }
