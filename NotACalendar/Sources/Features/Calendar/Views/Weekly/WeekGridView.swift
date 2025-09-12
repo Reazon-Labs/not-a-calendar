@@ -8,22 +8,31 @@ struct WeekGridView: View {
 
   var body: some View {
     ScrollView {
-      HStack(alignment: .top, spacing: 0) {
-        HourColumnView(hourHeight: hourHeight)
+      ZStack {
 
-        GeometryReader { geo in
-          let columnWidth = geo.size.width / CGFloat(viewModel.daysDisplayed)
+        HStack(alignment: .top, spacing: 0) {
+          HourColumnView(hourHeight: hourHeight)
 
-          ZStack(alignment: .topLeading) {
-            GridLinesView(hourHeight: hourHeight, viewModel: viewModel)
+          GeometryReader { geo in
+            let columnWidth = geo.size.width / CGFloat(viewModel.daysDisplayed)
 
-            if let tasks = viewModel.tasks {
-              eventContainer(columnWidth: columnWidth, tasks: tasks)
+            ZStack(alignment: .topLeading) {
+              GridLinesView(hourHeight: hourHeight, viewModel: viewModel)
+
+              if let tasks = viewModel.tasks {
+                eventContainer(columnWidth: columnWidth, tasks: tasks)
+              }
+
             }
           }
         }
+        .frame(height: 24 * hourHeight)
+
+        if viewModel.isCurrentWeek {
+          CurrentTimeIndicatorView(hourHeight: hourHeight)
+        }
+
       }
-      .frame(height: 24 * hourHeight)
     }
   }
 

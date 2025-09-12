@@ -19,6 +19,10 @@ class WeeklyViewModel: ObservableObject {
     self.currentWeekStart = calendar.startOfWeek(for: startDate)
   }
 
+  var isCurrentWeek: Bool {
+    calendar.isDate(currentWeekStart, inSameDayAs: calendar.startOfWeek(for: Date()))
+  }
+
   var month: String {
     currentWeekStart.formatted(.dateTime.month(.wide).year())
   }

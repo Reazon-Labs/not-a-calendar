@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct WeeklyView: View {
-  @ObservedObject private var viewModel = WeeklyViewModel()
-
-  init() {
-    viewModel.fetchTasks(since: Date(), days: 7)
-  }
+  @StateObject private var viewModel = WeeklyViewModel()
 
   var body: some View {
     VStack(spacing: 0) {
@@ -46,7 +42,6 @@ struct WeeklyView: View {
       Divider()
       WeekGridView(viewModel: viewModel)
     }
-    .padding(.top, 4)
   }
 
 }
